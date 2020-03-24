@@ -18,17 +18,14 @@ Motor motorRight(1);
 
 int main()
 {
-	DDRD |= (1 << 5)|(1<<0);
+	DDRD |= (1 << 5);
 	DDRF = 0;
-
-	DDRB |= (1<<7);
 
 	AnalogToDigital::init();
 
 	while (1)
 	{
-		double turning_val = (sensor5.read() - sensor4.read()) / 255;
-		motorLeft.set(0.5 + turning_val);
-		motorRight.set(0.5 - turning_val);
+		motorLeft.set(-1.0);
+		motorRight.set(1.0);
 	}
 }
